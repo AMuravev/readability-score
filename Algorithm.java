@@ -37,12 +37,14 @@ public abstract class Algorithm {
 
     abstract protected void calculateScore(TextSummary ts);
 
+    abstract protected String getName();
+
     protected double getScore() {
         return score;
     }
 
     protected void printScore() {
-        System.out.format("%.2f (about %d year olds).\n", score, getAge(score));
+        System.out.format("%s: %.2f (about %d year olds).\n", getName(), score, getAge(score));
     }
 }
 
@@ -58,9 +60,8 @@ class ARIAlgorithm extends Algorithm {
     }
 
     @Override
-    protected void printScore() {
-        System.out.print("Automated Readability Index: ");
-        super.printScore();
+    protected String getName() {
+        return "Automated Readability Index";
     }
 }
 
@@ -76,9 +77,8 @@ class FKAlgorithm extends Algorithm {
     }
 
     @Override
-    protected void printScore() {
-        System.out.print("Flesch–Kincaid readability tests: ");
-        super.printScore();
+    protected String getName() {
+        return "Flesch–Kincaid readability tests";
     }
 }
 
@@ -97,9 +97,8 @@ class SMOGAlgorithm extends Algorithm {
     }
 
     @Override
-    protected void printScore() {
-        System.out.print("Simple Measure of Gobbledygook: ");
-        super.printScore();
+    protected String getName() {
+        return "Simple Measure of Gobbledygook";
     }
 }
 
@@ -118,8 +117,7 @@ class CLAlgorithm extends Algorithm {
     }
 
     @Override
-    protected void printScore() {
-        System.out.print("Coleman–Liau index: ");
-        super.printScore();
+    protected String getName() {
+        return "Coleman–Liau index";
     }
 }
